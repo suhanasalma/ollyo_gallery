@@ -6,10 +6,30 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+### `To clone this repository`
+
+git clone https://github.com/suhanasalma/ollyo_gallery.git
+
+### `Next command to go inside the directory`
+
+**cd ollyo_gallery**
+
+### `Now need to download npm packages`
+
+run comman **npm install**
+
+
 ### `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+
+
+**Note: Now your project is running on your loacl ip**
+### `This is a photo gallery where you can upload files and download them`
+### `This is a two page website if you delete all your photos you will see another page where you can see upload image button and you can upload as many as photo you want`
+### `You can reorder images by dragging them`
+
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
@@ -18,6 +38,7 @@ You may also see any lint errors in the console.
 
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
 
 ### `npm run build`
 

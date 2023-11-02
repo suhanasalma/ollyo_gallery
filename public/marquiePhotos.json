@@ -1,0 +1,24 @@
+{
+  "imagesOneRow": [
+    {
+      "img": "https://i.ibb.co/S5cP0Bn/1.jpg"
+    },
+    {
+      "img": "https://i.ibb.co/nrdrD97/2.jpg"
+    },
+    {
+      "img": "https://i.ibb.co/rbyFHWb/3.jpg"
+    }
+  ],
+  "imagesSecondRow": [
+    {
+      "img": "https://i.ibb.co/tpLNZRQ/4.jpg"
+    },
+    {
+      "img": "https://i.ibb.co/tcNKP2Z/5.jpg"
+    },
+    {
+      "img": "https://i.ibb.co/tQPCRfX/6.jpg"
+    }
+  ]
+}

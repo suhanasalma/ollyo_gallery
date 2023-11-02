@@ -9,7 +9,6 @@ import "./home.css";
 const Home = ({
   images,
   setImages,
-  allImages,
   fileInputRef,
   imageCount,
   setImageCount,
@@ -47,7 +46,7 @@ const Home = ({
           onDragOver={(e) => e.preventDefault()}
           className="grid lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-10 p-10"
         >
-          {images.map((item, index) => (
+          {images?.map((item, index) => (
             <ImageItem
               images={images}
               key={item.id}

@@ -6,7 +6,7 @@ import {toast } from 'react-toastify';
 const FilesDownloadAndDelete = ({selectedFilesCount,images,setImages,imageCount,selectedImages}) => {
 
   const deleteFiles = () => {
-    let image = images.filter((image) => !image.selected);
+    let image = images?.filter((image) => !image.selected);
     setImages(image);
     toast.success(`${selectedFilesCount} ${selectedFilesCount===1?"photo":"photos"} deleted successfully`,{
       position: "top-center",

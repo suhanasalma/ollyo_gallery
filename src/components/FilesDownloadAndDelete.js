@@ -1,9 +1,46 @@
 import React from 'react';
 import { FaTrash, FaDownload } from "react-icons/fa";
+import {toast } from 'react-toastify';
 
-const FilesDownloadAndDelete = ({selectedFilesCount,selectAllImages,deleteFiles,handleDownload}) => {
+
+const FilesDownloadAndDelete = ({selectedFilesCount,images,setImages,imageCount,selectedImages}) => {
+
+  const deleteFiles = () => {
+    let image = images.filter((image) => !image.selected);
+    setImages(image);
+    toast.success(`${selectedFilesCount} ${selectedFilesCount===1?"photo":"photos"} deleted successfully`,{
+      position: "top-center",
+      autoClose: 500,
+
+    });
+  };
+  const selectAllImages = () => {
+    const updatedImages = images.map((image) => {
+      if (selectedFilesCount == imageCount) {
+        return { ...image, selected: false };
+      }
+      return { ...image, selected: true };
+    });
+    setImages(updatedImages);
+  };
+  const handleDownload = () => {
+    selectedImages.forEach((image) => {
+      const a = document.createElement("a");
+      a.href = image.img;
+      a.download = `image_${image.id}.png`;
+      a.style.display = "none";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    });
+    toast.success(`${selectedFilesCount} ${selectedFilesCount===1?" photo":" photos"} downloaded successfully`,{
+      position: "top-center",
+      autoClose: 500,
+
+    });
+  };
     return (
-        <div>
+        <div >
             {selectedFilesCount === 0 ? (
           <div className="text-lg">
             <p className="font-bold px-10 pt-5">Gallery</p>

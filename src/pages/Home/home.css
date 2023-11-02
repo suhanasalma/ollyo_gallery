@@ -1,87 +1,96 @@
-
-
 .grid-item-2x2 {
-    grid-column: span 2;
-    grid-row: span 2;
-  
-  }
-  .grid-items {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+.grid-items {
+  grid-column: span 1;
+  grid-row: span 1;
+}
+
+.image-container {
+  position: relative;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.3s;
+}
+.selectedFile {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.3s;
+}
+
+.overlay-button {
+  background: #fff;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 10%;
+  left: 10%;
+}
+
+.image-container:hover .overlay {
+  display: flex;
+  opacity: 1;
+}
+.image-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%; /* 1:1 aspect ratio (adjust as needed) */
+  overflow: hidden;
+}
+
+.image-container img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media screen and (max-width: 640px) {
+  .grid-item-2x2 {
     grid-column: span 1;
     grid-row: span 1;
-  
   }
-  
-  .image-container {
-    position: relative;
-  }
-  
-  .image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.6); 
-    display: none;
-    justify-content: center;
-    align-items: center;
-    transition: opacity 0.3s;
-  }
-  .selectedFile {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.1); 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: opacity 0.3s;
-  }
-  
-  .overlay-button {
-    background: #fff;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    position: absolute;
-    top: 10%;
-    left: 10%;
-  }
-  
-  .image-container:hover .overlay {
-    display: flex;
-    opacity: 1;
-  }
-  .image-container {
-    position: relative;
-    width: 100%;
-    padding-bottom: 100%; /* 1:1 aspect ratio (adjust as needed) */
-    overflow: hidden;
-  }
-  
-  .image-container img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  
-  @media screen and (max-width: 640px) {
-    .grid-item-2x2 {
-      grid-column: span 1;
-      grid-row: span 1;
-    
-    }
-  }
-  
+}
+
+
+.dragging-image img{
+    opacity: 0;
+}
+.drag-preview {
+  z-index: 100;
+  border: 2px solid #94a3b8;
+  opacity: 1;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #f1f5f9;
+} 
+

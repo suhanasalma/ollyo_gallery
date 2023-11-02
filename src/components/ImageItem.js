@@ -1,14 +1,23 @@
-import React from 'react';
-import { useDrag, useDrop } from 'react-dnd';
+import React from "react";
+import { useDrag, useDrop } from "react-dnd";
 
-const ImageItem = ({ image, index, handleCheckboxChange, setImages,images }) => {
-  const [, ref] = useDrag({
-    type: 'IMAGE',
+const ImageItem = ({
+  image,
+  index,
+  handleCheckboxChange,
+  setImages,
+  images,
+}) => {
+  const [{ isDragging }, drag, preview] = useDrag({
+    type: "IMAGE",
     item: { id: image.id, index },
+    collect: (monitor) => ({
+      isDragging: monitor.isDragging(),
+    }),
   });
 
   const [, drop] = useDrop({
-    accept: 'IMAGE',
+    accept: "IMAGE",
     hover: (draggedItem) => {
       if (draggedItem.index !== index) {
         const updatedImages = [...images];
@@ -20,18 +29,31 @@ const ImageItem = ({ image, index, handleCheckboxChange, setImages,images }) => 
     },
   });
 
-
   return (
     <div
       ref={(node) => {
-        ref(drop(node));
+        drag(node);
+        drop(node);
       }}
-      
-      className={index === 0 ? 'grid-item-2x2' : 'grid-item cursor-pointer'}
+      className={index === 0 ? "grid-item-2x2" : "grid-item cursor-pointer"}
     >
-      <div className="image-container rounded-lg border-2 overflow-hidden">
-        <img alt="img" src={image.img} className="image rounded-md" />
-        <div className={`${image.selected ? 'selectedFile' : 'overlay'} rounded-md`}>
+      <div
+        className={`image-container rounded-lg border-2 overflow-hidden ${
+          isDragging && index !== 0 ? "dragging-image" : " opacity-100"
+        }`}
+      >
+        <img
+          loading="lazy"
+          alt="img"
+          src={image.img}
+          className={`image rounded-md `}
+        />
+
+        <div
+          className={`${
+            image.selected ? "selectedFile" : "overlay"
+          } rounded-md`}
+        >
           <input
             type="checkbox"
             checked={image.selected}
@@ -39,6 +61,18 @@ const ImageItem = ({ image, index, handleCheckboxChange, setImages,images }) => 
             className="overlay-button w-10 h-5"
           />
         </div>
+
+        {isDragging &&
+          preview(
+            <div className="drag-preview rounded-md">
+              <img
+                loading="lazy"
+                alt="img"
+                src={image.img}
+                className="image rounded-lg overflow-hidden"
+              />
+            </div>
+          )}
       </div>
     </div>
   );
